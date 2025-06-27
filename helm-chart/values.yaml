@@ -1,7 +1,10 @@
+replicaCount: 1
+
 image:
-  repository: avi070440/flask-app
+  repository: avi070440/todo-app
   tag: latest
 
 service:
+  type: NodePort
   port: 80
   targetPort: 5000

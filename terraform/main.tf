@@ -5,8 +5,8 @@ resource "kubernetes_namespace" "flask" {
 }
 
 resource "helm_release" "flask" {
-  name       = "flask"
-  chart      = "./helm-chart"
-  namespace  = kubernetes_namespace.flask.metadata[0].name
+  name             = "flask"
+  chart            = "./helm-chart"
+  namespace        = kubernetes_namespace.flask.metadata[0].name
   create_namespace = false
 }

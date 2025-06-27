@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_sqlalchemy import SQLAlchemy
+#from flask_sqlalchemy import SQLAlchemy
+from extensions import db
+from models import Task
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-from models import Task
+db.init_app(app)
 
 @app.route('/')
 def index():
@@ -37,6 +37,9 @@ def delete(task_id):
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
+    from extensions import db
+    from models import Task
     with app.app_context():
+        print("📦 Creating the database and tables (if not exist)...")
         db.create_all()
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)

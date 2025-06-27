@@ -11,8 +11,8 @@ WORKDIR /app
 # Copy requirements
 COPY requirements.txt .
 
-# Install SQLite and Python dependencies
-RUN apt update && apt install -y sqlite3 && apt clean
+# Install SQLite
+RUN apt-get update && apt-get install -y --no-install-recommends sqlite3 libsqlite3-dev && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt

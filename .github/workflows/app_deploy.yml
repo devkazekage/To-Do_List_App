@@ -1,0 +1,26 @@
+
+name: Terraform on Self-Hosted Runner (Docker Desktop)
+
+on:
+  push:
+    branches:
+      - app_deploy
+  pull_request:
+
+jobs:
+  terraform:
+    name: Basic Check
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+      # Step 2: Debug workspace
+    - name: Show working directory
+      run: pwd
+
+    - name: List files in workspace
+      run: ls -l
+
+# Finished

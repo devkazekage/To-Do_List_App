@@ -4,8 +4,7 @@ name: Terraform on Self-Hosted Runner (Docker Desktop)
 on:
   push:
     branches:
-      - app_deploy
-  pull_request:
+      - test_branch
 
 jobs:
   terraform:
